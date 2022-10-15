@@ -75,7 +75,7 @@ export default function HomeLanding({ navigation }) {
 				<View style={styles.viewContainer}>
 					<Button
 						title="View Government Alerts"
-						page="View Government Alerts"
+						page="View Government Alert"
 						navigation={navigation}
 					/>
 					<Button
