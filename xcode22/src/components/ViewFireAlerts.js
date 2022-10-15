@@ -65,8 +65,8 @@ export default function ViewFireAlerts() {
 						if (el.category == 'FireAlert') {
 							return (
 								<View style={styles.AlertFieldContainer}>
-									<Text style={styles.fieldTitle}>{el.title}</Text>
-									<Text style={styles.descriptionField}>{el.description}</Text>
+									<Text style={styles.fieldTitle}>{el.description}</Text>
+									<Text style={styles.descriptionField}>{el.title}</Text>
 								</View>
 							)
 						}
