@@ -88,16 +88,13 @@ export default function PoliceAlert({ navigation }) {
 			} = await Location.getCurrentPositionAsync()
 			setLatitude(latitude)
 			setLongitude(longitude)
-		} catch (error) {
-			console.log(error)
-		}
+		} catch (error) {}
 	}
 	const location = getLocation()
 	const token = useSelector((state) => state.user.token)
 	const [condition, setCondition] = useState('')
 	const [description, setDescription] = useState('')
 	const handleSubmit = () => {
-		console.log('location', { latitude, longitude })
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'
 		fetch(`${url}/user_alerts/`, {
@@ -116,7 +113,6 @@ export default function PoliceAlert({ navigation }) {
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					console.log(json.error)
 				} else {
 					navigation.navigate('Home')
 				}

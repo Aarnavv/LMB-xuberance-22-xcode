@@ -43,7 +43,6 @@ export default function ViewPoliceAlerts() {
 	const group = useSelector((state) => state.user.user.user.groups[0].name)
 	const token = useSelector((state) => state.user.token)
 	const user = useSelector((state) => state.user)
-	console.log(user)
 	function getAlerts() {
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'
@@ -57,7 +56,6 @@ export default function ViewPoliceAlerts() {
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					console.log(json.error)
 				} else {
 					setAlerts(json)
 				}

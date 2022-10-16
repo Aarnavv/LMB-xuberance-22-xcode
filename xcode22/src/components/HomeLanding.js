@@ -47,7 +47,6 @@ export default function HomeLanding({ navigation }) {
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					console.log(json.error)
 				} else {
 					setAlerts(json)
 				}
@@ -99,28 +98,37 @@ export default function HomeLanding({ navigation }) {
 			{group == 'Police' || group == 'Firefighter' || group == 'Ambulance'
 				? group == 'Firefighter' && alerts
 					? alerts.map((el) => {
-							console.log(el.category)
 							if (el.category == 'FireAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} key={el.id}/>
+									<ViewAlert
+										title={el.title}
+										description={el.description}
+										key={el.id}
+									/>
 								)
 							}
 					  })
 					: group == 'Police' && alerts
 					? alerts.map((el) => {
-							console.log(el.category)
 							if (el.category == 'PoliceAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} key={el.id}/>
+									<ViewAlert
+										title={el.title}
+										description={el.description}
+										key={el.id}
+									/>
 								)
 							}
 					  })
 					: group == 'Ambulance' && alerts
 					? alerts.map((el) => {
-							console.log(el.category)
 							if (el.category == 'AmbulanceAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} key={el.id}/>
+									<ViewAlert
+										title={el.title}
+										description={el.description}
+										key={el.id}
+									/>
 								)
 							}
 					  })

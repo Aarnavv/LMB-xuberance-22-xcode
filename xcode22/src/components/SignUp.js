@@ -113,13 +113,10 @@ export default function Signup({ navigation }) {
 		})
 			.then((response) => response.json())
 			.then((json) => {
-				console.log(json)
 				dispatch(loginSuccess(json))
 				navigation.navigate('Welcome')
 			})
-			.catch((error) => {
-				console.log('Error', error)
-			})
+			.catch((error) => {})
 	}
 	return (
 		<View style={styles.container}>

@@ -91,7 +91,6 @@ export default function Login({ navigation }) {
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					console.log(json.error)
 					setInValid(true)
 				} else {
 					dispatch(loginSuccess(json))
