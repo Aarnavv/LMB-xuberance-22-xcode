@@ -58,7 +58,7 @@ export default function ViewGovernmentAlerts() {
 			{alerts
 				? alerts.map((el) => {
 						return (
-							<View style={styles.AlertFieldContainer}>
+							<View style={styles.AlertFieldContainer} key={el.id}>
 								<Text style={styles.fieldTitle}>{el.title}</Text>
 								<Text style={styles.alertDetails}>{el.time}</Text>
 								<Text style={styles.descriptionField}>{el.description}</Text>

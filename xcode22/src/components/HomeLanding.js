@@ -102,7 +102,7 @@ export default function HomeLanding({ navigation }) {
 							console.log(el.category)
 							if (el.category == 'FireAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} />
+									<ViewAlert title={el.title} description={el.description} key={el.id}/>
 								)
 							}
 					  })
@@ -111,7 +111,7 @@ export default function HomeLanding({ navigation }) {
 							console.log(el.category)
 							if (el.category == 'PoliceAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} />
+									<ViewAlert title={el.title} description={el.description} key={el.id}/>
 								)
 							}
 					  })
@@ -120,7 +120,7 @@ export default function HomeLanding({ navigation }) {
 							console.log(el.category)
 							if (el.category == 'AmbulanceAlert') {
 								return (
-									<ViewAlert title={el.title} description={el.description} />
+									<ViewAlert title={el.title} description={el.description} key={el.id}/>
 								)
 							}
 					  })
