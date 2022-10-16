@@ -70,7 +70,7 @@ export default function ViewHealthAlerts() {
         ? alerts.map((el) => {
           if (el.category == 'AmbulanceAlert') {
             return (
-              <View style={styles.AlertFieldContainer}>
+              <View style={styles.AlertFieldContainer} key={el.id}>
                 <Text style={styles.fieldTitle}>{el.description}</Text>
                 <View style={styles.alertDetails}>
                   <Text style={styles.alertDetails}>{'{time}'}</Text>
