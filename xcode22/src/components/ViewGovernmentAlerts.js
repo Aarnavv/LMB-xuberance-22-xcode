@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
 	descriptionField: {
 		fontSize: 15,
 	},
+  alertDetails: {
+    flexDirection: 'column',
+    fontSize: 10,
+    color: '#8892B0'
+  }
 })
 
 export default function ViewGovernmentAlerts() {
@@ -55,6 +60,7 @@ export default function ViewGovernmentAlerts() {
 						return (
 							<View style={styles.AlertFieldContainer}>
 								<Text style={styles.fieldTitle}>{el.title}</Text>
+                <Text style={styles.alertDetails}>{'{time}'}</Text>
 								<Text style={styles.descriptionField}>{el.description}</Text>
 							</View>
 						)
