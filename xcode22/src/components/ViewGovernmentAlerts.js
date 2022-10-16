@@ -4,14 +4,14 @@ import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native'
 import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingHorizontal: '5%',
-    paddingVertical: '5%',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+		paddingHorizontal: '5%',
+		paddingVertical: '5%',
+	},
 	AlertFieldContainer: {
 		flexDirection: 'column',
 		width: '90%',
@@ -25,16 +25,16 @@ const styles = StyleSheet.create({
 	fieldTitle: {
 		fontSize: 20,
 		marginBottom: 10,
-    textDecorationLine: 'underline',
+		textDecorationLine: 'underline',
 	},
 	descriptionField: {
 		fontSize: 15,
 	},
-  alertDetails: {
-    flexDirection: 'column',
-    fontSize: 10,
-    color: '#8892B0'
-  }
+	alertDetails: {
+		flexDirection: 'column',
+		fontSize: 10,
+		color: '#8892B0',
+	},
 })
 
 export default function ViewGovernmentAlerts() {
@@ -60,7 +60,7 @@ export default function ViewGovernmentAlerts() {
 						return (
 							<View style={styles.AlertFieldContainer}>
 								<Text style={styles.fieldTitle}>{el.title}</Text>
-                <Text style={styles.alertDetails}>{'{time}'}</Text>
+								<Text style={styles.alertDetails}>{el.time}</Text>
 								<Text style={styles.descriptionField}>{el.description}</Text>
 							</View>
 						)
