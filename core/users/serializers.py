@@ -29,8 +29,10 @@ class RegisterSerializer(serializers.Serializer):
       username=validated_data["username"],
       email=validated_data["email"]
     )
-    user.profile.state = validated_data["state"]
-    user.profile.aadhar_id = validated_data["aadhar_id"].strip()
+    profile = Profile.objects.get(user=user)
+    profile.state = validated_data["state"]
+    profile.aadhar_id = validated_data["aadhar_id"].strip()
+    profile.save()
     user.set_password(validated_data["password"])
     group = Group.objects.get(name=validated_data["group"]) 
     group.user_set.add(user)
