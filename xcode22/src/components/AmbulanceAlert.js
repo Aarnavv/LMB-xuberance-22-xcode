@@ -96,7 +96,7 @@ export default function HealthAlert({ navigation }) {
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					console.log(json.error)
+					// console.log(json.error)
 				} else {
 					navigation.navigate('Home')
 				}

@@ -37,7 +37,6 @@ export default function ViewFireAlerts() {
 	const group = useSelector((state) => state.user.user.user.groups[0].name)
 	const token = useSelector((state) => state.user.token)
 	const user = useSelector((state) => state.user)
-	console.log(user)
 	function getAlerts() {
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'

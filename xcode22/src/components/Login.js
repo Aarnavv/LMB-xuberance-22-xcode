@@ -102,7 +102,6 @@ export default function Login({ navigation }) {
 				setInValid(true)
 				dispatch(loginFail(error))
 			})
-		console.log(user)
 	}
 	return (
 		<View style={styles.container}>

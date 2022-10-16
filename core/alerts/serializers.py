@@ -16,6 +16,7 @@ class UserAlertValidator(serializers.Serializer):
   title = serializers.CharField()
   description = serializers.CharField()
   category = serializers.CharField()
+  location = serializers.CharField()
 
 class GovAlertValidator(serializers.Serializer):
   title = serializers.CharField()
