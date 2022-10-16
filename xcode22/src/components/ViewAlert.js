@@ -34,8 +34,8 @@ export default function ViewAlert({ title, description }) {
 		<View style={styles.AlertFieldContainer}>
 			<Text style={styles.fieldTitle}>{title}</Text>
 			<View style={styles.alertDetails}>
-				<Text style={styles.alertDetails}>{el.time}</Text>
-				<Text style={styles.alertDetails}>{el.location}</Text>
+				<Text style={styles.alertDetails}>{time}</Text>
+				<Text style={styles.alertDetails}>{location}</Text>
 			</View>
 			<Text style={styles.descriptionField}>{description}</Text>
 		</View>

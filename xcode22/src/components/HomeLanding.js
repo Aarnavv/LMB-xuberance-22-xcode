@@ -109,6 +109,8 @@ export default function HomeLanding({ navigation }) {
 									<ViewAlert
 										title={el.title}
 										description={el.description}
+										time={el.created}
+										location={el.location}
 										key={el.id}
 									/>
 								)
@@ -121,6 +123,8 @@ export default function HomeLanding({ navigation }) {
 									<ViewAlert
 										title={el.title}
 										description={el.description}
+										time={el.created}
+										location={el.location}
 										key={el.id}
 									/>
 								)
@@ -133,6 +137,8 @@ export default function HomeLanding({ navigation }) {
 									<ViewAlert
 										title={el.title}
 										description={el.description}
+										time={el.created}
+										location={el.location}
 										key={el.id}
 									/>
 								)
