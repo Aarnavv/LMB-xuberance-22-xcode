@@ -13,7 +13,7 @@ class Profile(models.Model):
   created = models.DateTimeField(auto_now_add=True)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   profile_image = models.ImageField(upload_to='profile_pics', default="default.jpeg")
-  aadhar_id = models.CharField(max_length=255,null=True)
+  aadhar_id = models.CharField(max_length=255,null=True,default="9876")
   state = models.CharField(max_length=255,blank=True,null=True,default="Kolkata")
   
   def __str__(self):
