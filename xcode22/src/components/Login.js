@@ -1,12 +1,7 @@
 // import * as React from 'react';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-	loginFail,
-	loginSuccess,
-	logout,
-	initiateRequest,
-} from '../../features/user'
+import { loginFail, loginSuccess } from '../../features/user'
 import { StyleSheet, Text, View, TextInput, Platform } from 'react-native'
 import Button from './Button.js'
 

@@ -2,7 +2,6 @@ import HomeLanding from './src/components/HomeLanding.js'
 import LoginSignup from './src/components/LoginSignup.js'
 import SignUp from './src/components/SignUp.js'
 import Login from './src/components/Login.js'
-import { NavigationContainer, StackActions } from '@react-navigation/native'
 import GovernmentAlert from './src/components/GovernmentAlert.js'
 import PoliceAlert from './src/components/PoliceAlert.js'
 import ViewGovernmentAlerts from './src/components/ViewGovernmentAlerts'
@@ -14,14 +13,11 @@ import { Button } from 'react-native'
 import FireAlert from './src/components/FireAlert.js'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useSelector, useDispatch } from 'react-redux'
-import { createNavigationContainerRef } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
-import { logout } from './features/user.js'
 
 export default function Stack() {
 	const Stack = createNativeStackNavigator()
 	const navigation = useNavigation()
-	const dispatch = useDispatch()
 	const user = useSelector((state) => state.user.user)
 	const handleLogout = () => {
 		navigation.navigate('Login')

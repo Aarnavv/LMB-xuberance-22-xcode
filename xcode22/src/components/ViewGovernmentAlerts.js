@@ -1,14 +1,6 @@
 // import * as React from 'react';
-import React, { useEffect, useState } from 'react'
-import {
-	StyleSheet,
-	Text,
-	View,
-	Button,
-	Alert,
-	TextInput,
-	ScrollView,
-} from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
@@ -68,7 +60,7 @@ export default function ViewGovernmentAlerts() {
 						return (
 							<View style={styles.AlertFieldContainer} key={el.id}>
 								<Text style={styles.fieldTitle}>{el.title}</Text>
-								<Text style={styles.alertDetails}>{el.time}</Text>
+								<Text style={styles.alertDetails}>{el.created}</Text>
 								<Text style={styles.descriptionField}>{el.description}</Text>
 							</View>
 						)

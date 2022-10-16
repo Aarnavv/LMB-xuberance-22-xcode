@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
 import Button from './Button'
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as Location from 'expo-location'
 
 const styles = StyleSheet.create({
@@ -90,7 +90,7 @@ export default function FireAlert({ navigation }) {
 			setLongitude(longitude)
 		} catch (error) {}
 	}
-	const location = getLocation()
+	getLocation()
 	const token = useSelector((state) => state.user.token)
 	const [condition, setCondition] = useState('')
 	const [description, setDescription] = useState('')
