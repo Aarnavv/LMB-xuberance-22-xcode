@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
 
 export default function HomeLanding({ navigation }) {
 	const [alerts, setAlerts] = useState(null)
-	const group = useSelector((state) => state.user.user.user.groups[0].name)
 	const token = useSelector((state) => state.user.token)
 	const user = useSelector((state) => state.user)
+	const group = useSelector((state) => state.user.user.user.groups[0].name)
 	function getAlerts() {
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'
@@ -53,6 +53,7 @@ export default function HomeLanding({ navigation }) {
 			})
 	}
 	getAlerts()
+
 	return (
 		<View style={styles.container}>
 			<View style={{ width: '100%', alignItems: 'center' }}>
@@ -66,9 +67,14 @@ export default function HomeLanding({ navigation }) {
 				/>
 				<Text>{'\n'}</Text>
 			</View>
-			<Text style={styles.title}>
-				Welcome {`${user.user.username}/${group} User`} {'\n'}{' '}
-			</Text>
+			{user !== null && group !== null ? (
+				<Text style={styles.title}>
+					Welcome {`${user.user.username}/${group} User`} {'\n'}{' '}
+				</Text>
+			) : (
+				''
+			)}
+
 			{group == 'Citizen' ? (
 				<View style={styles.viewContainer}>
 					<Button

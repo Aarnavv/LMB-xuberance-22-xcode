@@ -1,11 +1,20 @@
 // import * as React from 'react';
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native'
+import {
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	Alert,
+	TextInput,
+	SafeAreaView,
+	FlatList,
+	ScrollView,
+} from 'react-native'
 import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
@@ -63,7 +72,7 @@ export default function ViewFireAlerts() {
 	}
 	getAlerts()
 	return (
-		<View style={styles.container}>
+		<ScrollView contentContainerStyle={styles.container}>
 			{alerts != null
 				? alerts.map((el) => {
 						if (el.category == 'FireAlert') {
@@ -80,6 +89,6 @@ export default function ViewFireAlerts() {
 						}
 				  })
 				: null}
-		</View>
+		</ScrollView>
 	)
 }

@@ -10,18 +10,34 @@ import ViewFireAlerts from './src/components/ViewFireAlerts.js'
 import ViewHealthAlerts from './src/components/ViewHealthAlerts.js'
 import ViewPoliceAlerts from './src/components/ViewPoliceAlerts.js'
 import AmbulanceAlert from './src/components/AmbulanceAlert.js'
+import { Button } from 'react-native'
 import FireAlert from './src/components/FireAlert.js'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { createNavigationContainerRef } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
+import { logout } from './features/user.js'
 
 export default function Stack() {
 	const Stack = createNativeStackNavigator()
+	const navigation = useNavigation()
+	const dispatch = useDispatch()
 	const user = useSelector((state) => state.user.user)
-
+	const handleLogout = () => {
+		navigation.navigate('Login')
+	}
 	return (
 		<Stack.Navigator>
 			{!user ? <Stack.Screen name="Welcome" component={LoginSignup} /> : null}
-			<Stack.Screen name="Home" component={HomeLanding} />
+			<Stack.Screen
+				name="Home"
+				component={HomeLanding}
+				options={{
+					headerRight: () => (
+						<Button onPress={() => handleLogout()} title="Logout" color="red" />
+					),
+				}}
+			/>
 			<Stack.Screen name="Register" component={SignUp} />
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Police Alert" component={PoliceAlert} />

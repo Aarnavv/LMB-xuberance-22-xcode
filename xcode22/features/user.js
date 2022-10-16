@@ -32,7 +32,7 @@ export const userSlice = createSlice({
 			state.loading = false
 			state.error = action.payload.error
 		},
-		logout: async (state) => {
+		logout: (state, action) => {
 			state.loading = false
 			state.user = null
 			state.token = ''

@@ -1,6 +1,14 @@
 // import * as React from 'react';
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native'
+import {
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	Alert,
+	TextInput,
+	ScrollView,
+} from 'react-native'
 import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
@@ -54,7 +62,7 @@ export default function ViewGovernmentAlerts() {
 			setAlerts(json)
 		})
 	return (
-		<View style={styles.container}>
+		<ScrollView contentContainerStyle={styles.container}>
 			{alerts
 				? alerts.map((el) => {
 						return (
@@ -66,6 +74,6 @@ export default function ViewGovernmentAlerts() {
 						)
 				  })
 				: ''}
-		</View>
+		</ScrollView>
 	)
 }
