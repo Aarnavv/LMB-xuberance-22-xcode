@@ -1,9 +1,10 @@
 // import * as React from 'react';
-import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
 import Button from './Button'
 import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import * as Location from 'expo-location'
 
 const styles = StyleSheet.create({
 	container: {
@@ -14,71 +15,89 @@ const styles = StyleSheet.create({
 		paddingHorizontal: '15%',
 		paddingVertical: '5%',
 	},
-  heading: {
-    fontSize: 30,
-    marginTop: 10,
-  },
-  makeAlertContainer: {
-    flexDirection: 'column',
-    width: '100%',
-    justifyContent: 'space-around',
-    margin: 20,
-  },
-  AlertFieldContainer: {
-    flexDirection: 'column',
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: 50,
-  },
-  fieldTitle: {
-    fontSize: 20,
-    textDecorationLine: 'underline'
-  },
-  fields: {
-    height: 30,
-    width: '85%',
-    marginTop: 10,
-  },
-  descriptionField: {
-    height: 100,
-  },
-  buttonAlert: {
-    margin: 8,
-  },
-  dropdown: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 0.5,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    minWidth: '85%',
-  },
-  label: {
-    position: 'absolute',
-    backgroundColor: 'white',
-    left: 22,
-    top: 8,
-    zIndex: 999,
-    paddingHorizontal: 8,
-    fontSize: 12,
-  },
-  placeholderStyle: {
-    fontSize: 14,
-  },
-  selectedTextStyle: {
-    fontSize: 14,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 14,
-  },
+	heading: {
+		fontSize: 30,
+		marginTop: 10,
+	},
+	makeAlertContainer: {
+		flexDirection: 'column',
+		width: '100%',
+		justifyContent: 'space-around',
+		margin: 20,
+	},
+	AlertFieldContainer: {
+		flexDirection: 'column',
+		width: '100%',
+		alignItems: 'center',
+		marginBottom: 50,
+	},
+	fieldTitle: {
+		fontSize: 20,
+		textDecorationLine: 'underline',
+	},
+	fields: {
+		height: 30,
+		width: '85%',
+		marginTop: 10,
+	},
+	descriptionField: {
+		height: 100,
+	},
+	buttonAlert: {
+		margin: 8,
+	},
+	dropdown: {
+		height: 40,
+		borderColor: 'gray',
+		borderWidth: 0.5,
+		borderRadius: 8,
+		paddingHorizontal: 8,
+		minWidth: '85%',
+	},
+	label: {
+		position: 'absolute',
+		backgroundColor: 'white',
+		left: 22,
+		top: 8,
+		zIndex: 999,
+		paddingHorizontal: 8,
+		fontSize: 12,
+	},
+	placeholderStyle: {
+		fontSize: 14,
+	},
+	selectedTextStyle: {
+		fontSize: 14,
+	},
+	inputSearchStyle: {
+		height: 40,
+		fontSize: 14,
+	},
 })
 
 export default function PoliceAlert({ navigation }) {
+	const [longitude, setLongitude] = useState(0.0)
+	const [latitude, setLatitude] = useState(0.0)
+
+	const getLocation = async () => {
+		try {
+			const { granted } = await Location.requestForegroundPermissionsAsync()
+			if (!granted) return
+			const {
+				coords: { latitude, longitude },
+			} = await Location.getCurrentPositionAsync()
+			setLatitude(latitude)
+			setLongitude(longitude)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	const location = getLocation()
 	const token = useSelector((state) => state.user.token)
 	const [condition, setCondition] = useState('')
 	const [description, setDescription] = useState('')
 	const handleSubmit = () => {
+		console.log('location', { latitude, longitude })
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'
 		fetch(`${url}/user_alerts/`, {
@@ -91,6 +110,7 @@ export default function PoliceAlert({ navigation }) {
 				title: condition,
 				description: description,
 				category: 'PoliceAlert',
+				location: `${latitude},${longitude}`,
 			}),
 		})
 			.then((response) => response.json())
@@ -106,7 +126,7 @@ export default function PoliceAlert({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={{ width: '100%', alignItems: 'center' }}>
-				<Text style={styles.heading}>Alert the Police</Text>
+				<Text style={styles.heading}>Alert the Fire Department</Text>
 				<View
 					style={{
 						width: '100%',
@@ -116,11 +136,15 @@ export default function PoliceAlert({ navigation }) {
 				/>
 			</View>
 			<View style={styles.makeAlertContainer}>
+				<Text style={{ color: 'red' }}>
+					*Not specifying details will result in the assumption that health
+					services are required immediately.{'\n'}
+				</Text>
 				<View style={styles.AlertFieldContainer}>
-					<Text style={styles.fieldTitle}>Situation</Text>
+					<Text style={styles.fieldTitle}>Condition</Text>
 					<TextInput
 						style={[styles.input, styles.fields]}
-						placeholder="Situation"
+						placeholder="Condition"
 						textAlign="center"
 						onChangeText={setCondition}
 					/>

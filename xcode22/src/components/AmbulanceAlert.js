@@ -1,9 +1,10 @@
 // import * as React from 'react';
-import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
-import { useSelector } from 'react-redux'
 import Button from './Button'
+import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import * as Location from 'expo-location'
 
 const styles = StyleSheet.create({
 	container: {
@@ -74,11 +75,29 @@ const styles = StyleSheet.create({
 	},
 })
 
-export default function HealthAlert({ navigation }) {
+export default function AmbulanceAlert({ navigation }) {
+	const [longitude, setLongitude] = useState(0.0)
+	const [latitude, setLatitude] = useState(0.0)
+
+	const getLocation = async () => {
+		try {
+			const { granted } = await Location.requestForegroundPermissionsAsync()
+			if (!granted) return
+			const {
+				coords: { latitude, longitude },
+			} = await Location.getCurrentPositionAsync()
+			setLatitude(latitude)
+			setLongitude(longitude)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	const location = getLocation()
 	const token = useSelector((state) => state.user.token)
 	const [condition, setCondition] = useState('')
 	const [description, setDescription] = useState('')
 	const handleSubmit = () => {
+		console.log('location', { latitude, longitude })
 		const url =
 			Platform.OS == 'ios' ? 'http://localhost:8000' : 'http://10.0.2.2:8000'
 		fetch(`${url}/user_alerts/`, {
@@ -91,12 +110,13 @@ export default function HealthAlert({ navigation }) {
 				title: condition,
 				description: description,
 				category: 'AmbulanceAlert',
+				location: `${latitude},${longitude}`,
 			}),
 		})
 			.then((response) => response.json())
 			.then((json) => {
 				if (json.error) {
-					// console.log(json.error)
+					console.log(json.error)
 				} else {
 					navigation.navigate('Home')
 				}
@@ -106,7 +126,7 @@ export default function HealthAlert({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={{ width: '100%', alignItems: 'center' }}>
-				<Text style={styles.heading}>Call an Ambulance</Text>
+				<Text style={styles.heading}>Alert the Fire Department</Text>
 				<View
 					style={{
 						width: '100%',
