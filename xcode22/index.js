@@ -14,6 +14,9 @@ import FireAlert from './src/components/FireAlert.js'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
+import { LogBox } from 'react-native'
+LogBox.ignoreLogs(['Warning: ...']) // Ignore log notification by message
+LogBox.ignoreAllLogs() //Ignore all log notifications
 
 export default function Stack() {
 	const Stack = createNativeStackNavigator()
