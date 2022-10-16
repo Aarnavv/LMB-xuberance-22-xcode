@@ -22,6 +22,7 @@ def user_alerts(request):
       alert.title = serializer.data["title"]
       alert.description = serializer.data["description"]
       alert.category = serializer.data["category"]
+      alert.location = serializer.data["location"]
       alert.save()
       return Response(serializer.data,status=status.HTTP_201_CREATED)
     else:
