@@ -71,8 +71,8 @@ export default function ViewHealthAlerts() {
 								<View style={styles.AlertFieldContainer} key={el.id}>
 									<Text style={styles.fieldTitle}>{el.description}</Text>
 									<View style={styles.alertDetails}>
-										<Text style={styles.alertDetails}>{el.time}</Text>
-										<Text style={styles.alertDetails}>{el.time}</Text>
+										<Text style={styles.alertDetails}>{el.created}</Text>
+										<Text style={styles.alertDetails}>{el.location}</Text>
 									</View>
 									<Text style={styles.descriptionField}>{el.title}</Text>
 								</View>

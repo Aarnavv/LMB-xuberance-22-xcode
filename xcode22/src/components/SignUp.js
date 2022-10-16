@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown'
 import { useDispatch } from 'react-redux'
-import { loginFail, loginSuccess, initiateRequest } from '../../features/user'
+import { loginSuccess } from '../../features/user'
 import Button from './Button.js'
 
 const styles = StyleSheet.create({

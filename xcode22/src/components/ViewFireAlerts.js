@@ -1,16 +1,6 @@
 // import * as React from 'react';
 import React, { useState } from 'react'
-import {
-	StyleSheet,
-	Text,
-	View,
-	Button,
-	Alert,
-	TextInput,
-	SafeAreaView,
-	FlatList,
-	ScrollView,
-} from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
