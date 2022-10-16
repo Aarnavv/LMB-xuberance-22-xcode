@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 	},
 })
 
-export default function ViewAlert({ title, description }) {
+export default function ViewAlert({ title, description, time, location }) {
 	return (
 		<View style={styles.AlertFieldContainer}>
 			<Text style={styles.fieldTitle}>{title}</Text>
